@@ -314,9 +314,7 @@ export default function Home() {
                           <li className='p-1 font-semibold'>
                             <i className='pr-1 fa-solid fa-check'></i> {offer.invite} Sessions Invitations
                           </li>
-                          <li className='p-1 font-semibold'>
-                            <i className='pr-1 fa-solid fa-check'></i> ALL Classes
-                          </li>
+
                           <li className='p-1 font-semibold'>
                             <i className='pr-1 fa-solid fa-check'></i> SPA
                           </li>
