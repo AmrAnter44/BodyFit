@@ -80,7 +80,7 @@ export default function Home() {
         <div className="flex flex-wrap flex-row-reverse gap-4 justify-center pt-3 m-4">
           <Link 
             to={'/gold'} 
-            className="group relative gold-text glass-button hover:bg-blue-500 hover:text-white font-bold px-6 py-2 m-2 rounded-full flex flex-row justify-center items-center overflow-hidden transition-all duration-500"
+            className="group relative gold-text glass-button hover:bg-red-500 hover:text-white font-bold px-6 py-2 m-2 rounded-full flex flex-row justify-center items-center overflow-hidden transition-all duration-500"
           >
             <span className="m-auto">Gold</span>
             <img 
@@ -97,7 +97,7 @@ export default function Home() {
             {/* الزر الأخضر */}
             <button
               onClick={() => setShowPT(!showPT)}
-              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-blue-600 font-bold gymfont bg-white hover:bg-white/80 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
+              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-red-600 font-bold gymfont bg-white hover:bg-white/80 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
             >
               <i className="fa-solid fa-dumbbell"></i>
               Personal Training (PT)
@@ -111,7 +111,7 @@ export default function Home() {
                   {ptPackages.length === 0 ? (
                     <div className="col-span-full text-center py-8">
                       <i className="text-3xl text-white fa-solid fa-spinner fa-spin" />
-                      <p className="text-blue-600 mt-4">Loading PT Packages...</p>
+                      <p className="text-red-600 mt-4">Loading PT Packages...</p>
                     </div>
                   ) : (
                     ptPackages.map((pkg) => {
@@ -120,8 +120,8 @@ export default function Home() {
                       const pricePerSession = calculatePricePerSession(finalPrice, pkg.sessions);
 
                       return (
-                        <div key={pkg.id} className="glass w-full border-2 border-blue-500/30 hover:border-blue-500/50 transition-all">
-                          <div className="bg-white text-blue-600 p-3 rounded-t-lg">
+                        <div key={pkg.id} className="glass w-full border-2 border-red-500/30 hover:border-red-500/50 transition-all">
+                          <div className="bg-white text-red-600 p-3 rounded-t-lg">
                             <h3 className='font-bold text-2xl gymfont text-center'>
                               <i className="fa-solid fa-dumbbell pr-2"></i> 
                               {pkg.sessions} Sessions
@@ -138,7 +138,7 @@ export default function Home() {
                                     <span className="text-lg line-through text-gray-400">
                                       {pkg.price} EGP
                                     </span>
-                                    <span className="text-2xl font-bold text-blue-400">
+                                    <span className="text-2xl font-bold text-red-400">
                                       {pkg.price_discount} EGP
                                     </span>
                                   </>
@@ -151,11 +151,11 @@ export default function Home() {
                             </div>
 
                             {/* سعر الحصة الواحدة */}
-                            <div className='bg-blue-900/30 p-3 rounded-lg mb-4 border border-blue-500/20'>
+                            <div className='bg-red-900/30 p-3 rounded-lg mb-4 border border-red-500/20'>
                               <p className='text-sm text-gray-300 mb-1 text-center'>Price per session:</p>
                               <div className='flex items-center justify-center gap-2'>
-                                <i className="fa-solid fa-tag text-blue-400"></i>
-                                <span className='text-3xl font-bold text-blue-400'>
+                                <i className="fa-solid fa-tag text-red-400"></i>
+                                <span className='text-3xl font-bold text-red-400'>
                                   {pricePerSession} EGP
                                 </span>
                               </div>
@@ -164,15 +164,15 @@ export default function Home() {
                             {/* تفاصيل إضافية */}
                             <ul className='text-start text-gray-300 space-y-2 mb-4'>
                               <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-blue-400'></i>
+                                <i className='fa-solid fa-check text-red-400'></i>
                                 <span>{pkg.sessions} Personal Training Sessions</span>
                               </li>
                               <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-blue-400'></i>
+                                <i className='fa-solid fa-check text-red-400'></i>
                                 <span>Professional Coach</span>
                               </li>
                               <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-blue-400'></i>
+                                <i className='fa-solid fa-check text-red-400'></i>
                                 <span>Customized Training Plan</span>
                               </li>
                             </ul>
@@ -180,7 +180,7 @@ export default function Home() {
                             {/* زر الحجز */}
                             <button
                               onClick={() => handlePTBook(pkg)}
-                              className='w-full px-4 text-lg py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 font-bold'
+                              className='w-full px-4 text-lg py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-300 font-bold'
                             >
                               Book Now
                             </button>
@@ -200,7 +200,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto px-4">
             <button
               onClick={() => setShowOffers(!showOffers)}
-              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-white font-bold gymfont bg-blue-600 hover:bg-blue-700 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
+              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-white font-bold gymfont bg-red-600 hover:bg-red-700 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
             >
               Our Offers
               <i className={`fas fa-chevron-${showOffers ? 'up' : 'down'} transition-transform duration-300`}></i>
@@ -210,12 +210,12 @@ export default function Home() {
               <div className='pt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in'>
                 {offers.length === 0 ? (
                   <div className="col-span-full text-center py-8">
-                    <i className="text-3xl text-blue-400 fa-solid fa-spinner fa-spin" />
+                    <i className="text-3xl text-red-400 fa-solid fa-spinner fa-spin" />
                   </div>
                 ) : (
                   offers.map((offer) => (
                     <div key={offer.id} className="glass">
-                      <h3 className='p-1 font-bold text-xl gymfont text-blue-600'>
+                      <h3 className='p-1 font-bold text-xl gymfont text-red-600'>
                         <i className="fa-solid fa-dumbbell pr-2"></i> {offer.duration}
                       </h3>
 
@@ -225,7 +225,7 @@ export default function Home() {
                             <h3 className="p-1 font-bold text-lg line-through text-gray-400">
                               {offer.price} EGP
                             </h3>
-                            <h3 className="p-1 font-bold text-lg text-blue-600">
+                            <h3 className="p-1 font-bold text-lg text-red-600">
                               {offer.price_new} EGP
                             </h3>
                           </>
@@ -256,7 +256,7 @@ export default function Home() {
 
                       <button
                         onClick={() => handlebook(offer)}
-                        className='px-4 text-lg py-1 bg-blue-700 text-white rounded-lg hover:bg-blue-600'
+                        className='px-4 text-lg py-1 bg-red-700 text-white rounded-lg hover:bg-red-600'
                       >
                         book now
                       </button>
@@ -322,7 +322,7 @@ export default function Home() {
 
                         <button
                           onClick={() => handlebook(offer)}
-                          className='px-4 text-lg py-1 bg-gray-700 text-white rounded-lg hover:bg-blue-600'
+                          className='px-4 text-lg py-1 bg-gray-700 text-white rounded-lg hover:bg-red-600'
                         >
                           book now
                         </button>
@@ -348,13 +348,13 @@ export default function Home() {
 
         <div className='flex justify-evenly'>
           <div className="w-1/3 rounded-xl p-3 text-center">
-            <i className="fas fa-clock text-xl text-blue-400 mb-1"></i>
+            <i className="fas fa-clock text-xl text-red-400 mb-1"></i>
             <p className="text-white font-bold text-sm">24/7</p>
             <p className="text-gray-300 text-xs">Open</p>
           </div>
 
           <div className="w-1/3 rounded-xl p-3 text-center">
-            <i className="fas fa-wifi text-xl text-blue-400 mb-1"></i>
+            <i className="fas fa-wifi text-xl text-red-400 mb-1"></i>
             <p className="text-white font-bold text-sm">FREE</p>
             <p className="text-gray-300 text-xs">Wi-Fi</p>
           </div>

@@ -15,7 +15,7 @@ export default function Online() {
                 <li>strenss training</li>
                 <li>certified trainer</li>
             </ul>
-                    <Link to={'/sign'}  className='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl w-full'>Book Now </Link>
+                    <Link to={'/sign'}  className='bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl w-full'>Book Now </Link>
         </div>
 
                 <div className='bg-black rounded-lg '>
@@ -25,7 +25,7 @@ export default function Online() {
                 <li>yoga teaching</li>
                 <li>certified trainer</li>
             </ul>
-            <Link to={'/sign'}  className='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl w-full'>Book Now </Link>
+            <Link to={'/sign'}  className='bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl w-full'>Book Now </Link>
         </div>
 
     </div>
