@@ -41,7 +41,7 @@ body {
 }
 
 .active {
-  @apply bg-transparent border-b-2 border-green-500 p-4;
+  @apply bg-transparent border-b-2 border-red-500 p-4;
 }
 
 .loader {

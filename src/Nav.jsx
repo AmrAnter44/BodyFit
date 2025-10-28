@@ -49,7 +49,7 @@ export default function Nav() {
     rest: { scale: 1 },
     hover: { 
       scale: 1.1,
-      backgroundColor: "rgba(75, 85, 99, 0.8)",
+      backgroundColor: "#f63b3b",
       transition: { duration: 0.2 }
     },
     tap: { 
@@ -63,7 +63,7 @@ export default function Nav() {
     hover: { 
       scale: 1.2,
       rotate: 10,
-      color: "#3b82f6",
+      color: "#f63b3b",
       transition: { duration: 0.2 }
     }
   };
@@ -92,14 +92,7 @@ export default function Nav() {
             </Link>
 
             <div className="flex items-center lg:hidden">
-              <Link to={"/shop"}>
-                <motion.i 
-                  className="fa-solid fa-cart-shopping text-2xl mr-4 mb-2 mt-3"
-                  variants={cartIconVariants}
-                  initial="rest"
-                  whileHover="hover"
-                />
-              </Link>
+
 
               <motion.button
                 className="text-white text-3xl"
@@ -150,32 +143,9 @@ export default function Nav() {
               </motion.span>
             </Link>
 
-            <Link
-              to="/map"
-              className="hover:text-red-500 px-2 py-2 m-1 rounded-lg hover:bg-gray-800"
-              onClick={() => setOpen(false)}
-            >
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-              >
-                Map
-              </motion.span>
-            </Link>
 
-            <Link
-              to={"/shop"}
-              className="hidden lg:block ml-4"
-              onClick={() => setOpen(false)}
-            >
-              <motion.i 
-                className="fa-solid fa-cart-shopping text-2xl"
-                variants={cartIconVariants}
-                initial="rest"
-                whileHover="hover"
-              />
-            </Link>
+
+
           </div>
         </div>
       </motion.div>

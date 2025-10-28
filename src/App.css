@@ -41,11 +41,11 @@ body {
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #ff6464aa);
 }
 
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #fb6161aa);
 }
 
 @keyframes logo-spin {
@@ -113,7 +113,7 @@ li{
   color:#C0C0C0;
 }
 .bronze-text{
-  color:#CD7F32;
+  color:#cd3232;
 }
 
 .glass {
@@ -133,7 +133,7 @@ li{
   padding: 20px;
 }
 .glass-nav {
-  background: rgba(1, 17, 36, 0.411); /* semi-transparent */
+  background: rgba(210, 25, 25, 0.27); /* semi-transparent */
   border-radius: 16px;
   backdrop-filter: blur(10px); /* glass blur effect */
   -webkit-backdrop-filter: blur(10px); /* Safari support */  
@@ -141,7 +141,7 @@ li{
 
 }
 .glass-button {
-  background: rgba(1, 17, 36, 0.411); /* semi-transparent */
+  background: rgba(77, 2, 2, 0.411); /* semi-transparent */
   border-radius: 16px;
   backdrop-filter: blur(10px); /* glass blur effect */
   -webkit-backdrop-filter: blur(10px); /* Safari support */  
@@ -149,7 +149,7 @@ li{
   border: 3px solid white;
 }
 .glass-class {
-  background: rgba(0, 119, 255, 0.272); /* semi-transparent */
+  background: rgba(255, 0, 0, 0.272); /* semi-transparent */
   border-radius: 16px;
   backdrop-filter: blur(10px); /* glass blur effect */
   -webkit-backdrop-filter: blur(10px); /* Safari support */  
@@ -163,14 +163,7 @@ li{
   padding: 20px;
 }
 .glass-class-mem {
-  background: rgba(109, 109, 109, 0.272); /* semi-transparent */
-  border-radius: 16px;
-  backdrop-filter: blur(10px); /* glass blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */  
-  padding: 20px;
-}
-.glass-gold {
-  background: rgba(255, 247, 19, 0.306); /* semi-transparent */
+  background: rgba(255, 31, 31, 0.272); /* semi-transparent */
   border-radius: 16px;
   backdrop-filter: blur(10px); /* glass blur effect */
   -webkit-backdrop-filter: blur(10px); /* Safari support */  
@@ -180,7 +173,7 @@ li{
 .marquee {
   width: 100%;
   overflow: hidden;
-  background: rgba(0, 102, 255, 0.486);
+  background: rgba(255, 35, 35, 0.486);
   color: white;
   white-space: nowrap;
   position: relative;

@@ -77,19 +77,7 @@ export default function Home() {
           VIP Body Package
         </h2>
 
-        <div className="flex flex-wrap flex-row-reverse gap-4 justify-center pt-3 m-4">
-          <Link 
-            to={'/gold'} 
-            className="group relative gold-text glass-button hover:bg-red-500 hover:text-white font-bold px-6 py-2 m-2 rounded-full flex flex-row justify-center items-center overflow-hidden transition-all duration-500"
-          >
-            <span className="m-auto">Gold</span>
-            <img 
-              src="./logo.png" 
-              alt="" 
-              className="ml-2 w-12 transform transition-all duration-500 group-hover:-rotate-90 group-hover:translate-x-10 group-hover:opacity-0" 
-            />
-          </Link>
-        </div>
+
 
         {/* ==================== قسم PT (الجديد) ==================== */}
         <div className='w-full py-9'>
@@ -268,72 +256,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ==================== قسم العروض بخصم 33% ==================== */}
-        <div className='w-full py-9'>
-          <div className="max-w-4xl mx-auto px-4">
-            <button
-              onClick={() => setShowOffers33(!showOffers33)}
-              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-white font-bold gymfont bg-gray-700 hover:bg-gray-600 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
-            >
-              33% OFF Offers
-              <i className={`fas fa-chevron-${showOffers33 ? 'up' : 'down'} transition-transform duration-300`}></i>
-            </button>
-            
-            {showOffers33 && (
-              <>
-                <p className='text-white text-xl mt-4 text-center'>The offer is valid only from 3 AM to 3 PM.</p>
-                
-                <div className='pt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in'>
-                  {offers33.length === 0 ? (
-                    <div className="col-span-full text-center py-8">
-                      <i className="text-3xl text-white fa-solid fa-spinner fa-spin" />
-                    </div>
-                  ) : (
-                    offers33.map((offer) => (
-                      <div key={`33-${offer.id}`} className="glass">
-                        <h3 className='p-1 font-bold text-xl gymfont text-white'>
-                          <i className="fa-solid fa-dumbbell pr-2"></i> {offer.duration}
-                        </h3>
-
-                        <div className='flex justify-between'>
-                          <h3 className="p-1 font-bold text-lg line-through text-gray-400">
-                            {offer.price} EGP
-                          </h3>
-                          <h3 className="p-1 font-bold text-lg text-white-600">
-                            {offer.price_new} EGP
-                          </h3>
-                        </div>
-
-                        <ul className='p-1 text-start text-white-700'>
-                          <li className='p-1 font-semibold'>
-                            <i className='pr-1 fa-solid fa-check'></i> {offer.private} Sessions Personal Training
-                          </li>
-                          <li className='p-1 font-semibold'>
-                            <i className='pr-1 fa-solid fa-check'></i> {offer.inbody} Sessions In Inbody
-                          </li>
-                          <li className='p-1 font-semibold'>
-                            <i className='pr-1 fa-solid fa-check'></i> {offer.invite} Sessions Invitations
-                          </li>
-
-                          <li className='p-1 font-semibold'>
-                            <i className='pr-1 fa-solid fa-check'></i> SPA
-                          </li>
-                        </ul>
-
-                        <button
-                          onClick={() => handlebook(offer)}
-                          className='px-4 text-lg py-1 bg-gray-700 text-white rounded-lg hover:bg-red-600'
-                        >
-                          book now
-                        </button>
-                      </div>
-                    ))
-                  )}
-                </div>
-              </>
-            )}
-          </div>
-        </div>
 
         <div className="marquee">
           <p className="ml-11">
