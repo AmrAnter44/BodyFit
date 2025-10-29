@@ -69,7 +69,7 @@ export default function Home() {
 
   return (
     <>
-      <Nav2 />
+      {/* <Nav2 /> */}//////////////////////////////////////////////
       
       <div className="mt-20">
         {/* ==================== VIP GOLD ==================== */}
@@ -108,8 +108,8 @@ export default function Home() {
                       const pricePerSession = calculatePricePerSession(finalPrice, pkg.sessions);
 
                       return (
-                        <div key={pkg.id} className="glass w-full border-2 border-red-500/30 hover:border-red-500/50 transition-all">
-                          <div className="bg-white text-red-600 p-3 rounded-t-lg">
+                        <div key={pkg.id} className="bg-black/80 p-4 rounded-lg border border-red-600/80">
+                          <div className=" text-red-600 p-3 rounded-t-lg">
                             <h3 className='font-bold text-2xl gymfont text-center'>
                               <i className="fa-solid fa-dumbbell pr-2"></i> 
                               {pkg.sessions} Sessions
@@ -126,7 +126,7 @@ export default function Home() {
                                     <span className="text-lg line-through text-gray-400">
                                       {pkg.price} EGP
                                     </span>
-                                    <span className="text-2xl font-bold text-red-400">
+                                    <span className="text-2xl font-bold text-red-600">
                                       {pkg.price_discount} EGP
                                     </span>
                                   </>
@@ -139,11 +139,11 @@ export default function Home() {
                             </div>
 
                             {/* سعر الحصة الواحدة */}
-                            <div className='bg-red-900/30 p-3 rounded-lg mb-4 border border-red-500/20'>
+                            <div className='bg-red-900/30 p-3 rounded-lg mb-4 border border-red-600/70'>
                               <p className='text-sm text-gray-300 mb-1 text-center'>Price per session:</p>
                               <div className='flex items-center justify-center gap-2'>
-                                <i className="fa-solid fa-tag text-red-400"></i>
-                                <span className='text-3xl font-bold text-red-400'>
+                                <i className="fa-solid fa-tag text-red-600"></i>
+                                <span className='text-3xl font-bold text-red-600'>
                                   {pricePerSession} EGP
                                 </span>
                               </div>
@@ -152,15 +152,15 @@ export default function Home() {
                             {/* تفاصيل إضافية */}
                             <ul className='text-start text-gray-300 space-y-2 mb-4'>
                               <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-red-400'></i>
+                                <i className='fa-solid fa-check text-red-600'></i>
                                 <span>{pkg.sessions} Personal Training Sessions</span>
                               </li>
                               <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-red-400'></i>
+                                <i className='fa-solid fa-check text-red-600'></i>
                                 <span>Professional Coach</span>
                               </li>
                               <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-red-400'></i>
+                                <i className='fa-solid fa-check text-red-600'></i>
                                 <span>Customized Training Plan</span>
                               </li>
                             </ul>
@@ -168,7 +168,7 @@ export default function Home() {
                             {/* زر الحجز */}
                             <button
                               onClick={() => handlePTBook(pkg)}
-                              className='w-full px-4 text-lg py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-300 font-bold'
+                              className='w-full px-4 text-lg py-2 bg-red-600 text-white rounded-lg hover:bg-red-600 transition-all duration-300 font-bold'
                             >
                               Book Now
                             </button>
@@ -188,7 +188,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto px-4">
             <button
               onClick={() => setShowOffers(!showOffers)}
-              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-white font-bold gymfont bg-red-600 hover:bg-red-700 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
+              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-white font-bold gymfont bg-red-600 hover:bg-red-600 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
             >
               Our Offers
               <i className={`fas fa-chevron-${showOffers ? 'up' : 'down'} transition-transform duration-300`}></i>
@@ -198,11 +198,11 @@ export default function Home() {
               <div className='pt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in'>
                 {offers.length === 0 ? (
                   <div className="col-span-full text-center py-8">
-                    <i className="text-3xl text-red-400 fa-solid fa-spinner fa-spin" />
+                    <i className="text-3xl text-red-600 fa-solid fa-spinner fa-spin" />
                   </div>
                 ) : (
                   offers.map((offer) => (
-                    <div key={offer.id} className="glass">
+                    <div key={offer.id} className="bg-black/80 p-4 rounded-lg border border-red-600/70">
                       <h3 className='p-1 font-bold text-xl gymfont text-red-600'>
                         <i className="fa-solid fa-dumbbell pr-2"></i> {offer.duration}
                       </h3>
@@ -224,7 +224,7 @@ export default function Home() {
                         )}
                       </div>
 
-                      <ul className='p-1 text-start text-white-700'>
+                      <ul className='p-1 text-start text-white-600'>
                         <li className='p-1 font-semibold'>
                           <i className='pr-1 fa-solid fa-check'></i> {offer.private} Sessions Personal Training
                         </li>
@@ -242,12 +242,12 @@ export default function Home() {
                         </li>
                       </ul>
 
-                      <button
-                        onClick={() => handlebook(offer)}
-                        className='px-4 text-lg py-1 bg-red-700 text-white rounded-lg hover:bg-red-600'
-                      >
-                        book now
-                      </button>
+                            <button
+                              onClick={() => handlePTBook(pkg)}
+                              className='w-full px-4 text-lg py-2 bg-red-600 text-white rounded-lg hover:bg-red-600 transition-all duration-300 font-bold'
+                            >
+                              Book Now
+                            </button>
                     </div>
                   ))
                 )}
@@ -259,28 +259,15 @@ export default function Home() {
 
         <div className="marquee">
           <p className="ml-11">
-            <span># INHALLE PASSION</span> &nbsp; &nbsp; 
-            <span># INHALLE PASSION</span> &nbsp; &nbsp; 
-            <span># INHALLE PASSION</span> &nbsp; &nbsp; 
-            <span># INHALLE PASSION</span> &nbsp; &nbsp;
+            <span># ONE MORE REP</span> &nbsp; &nbsp; 
+            <span># ONE MORE REP</span> &nbsp; &nbsp; 
+            <span># ONE MORE REP</span> &nbsp; &nbsp; 
+            <span># ONE MORE REP</span> &nbsp; &nbsp;
           </p>
         </div>
 
         <Coaches />
 
-        <div className='flex justify-evenly'>
-          <div className="w-1/3 rounded-xl p-3 text-center">
-            <i className="fas fa-clock text-xl text-red-400 mb-1"></i>
-            <p className="text-white font-bold text-sm">24/7</p>
-            <p className="text-gray-300 text-xs">Open</p>
-          </div>
-
-          <div className="w-1/3 rounded-xl p-3 text-center">
-            <i className="fas fa-wifi text-xl text-red-400 mb-1"></i>
-            <p className="text-white font-bold text-sm">FREE</p>
-            <p className="text-gray-300 text-xs">Wi-Fi</p>
-          </div>
-        </div>
       </div>
     </>
   );

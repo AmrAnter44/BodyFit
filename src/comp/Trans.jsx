@@ -30,15 +30,15 @@ export default function Trans() {
       {/* العنوان */}
       <div className="text-center mb-6">
         <h2 className="text-xl md:text-2xl font-bold text-white gymfont mb-2">
-          <span className="text-red-400">Transformations</span>
+          <span className="text-white">Transformations</span>
         </h2>
-        <div className="w-16 h-1 bg-red-500 mx-auto rounded-full"></div>
+        <div className="w-16 h-1 bg-red-600 mx-auto rounded-full"></div>
       </div>
 
       {/* السلايدر */}
       <div className="max-w-sm mx-auto mb-6">
-        <div className="glass rounded-2xl p-4">
-          <div className="bg-black/50 rounded-xl p-2">
+        <div className="bg-black rounded-2xl p-4">
+          <div className="bg-black rounded-xl p-2">
             <img
               src={images[current]}
               alt={`transformation-${current + 1}`}
@@ -53,7 +53,7 @@ export default function Trans() {
                 key={index}
                 onClick={() => setCurrent(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  index === current ? 'bg-red-500 w-4' : 'bg-gray-500'
+                  index === current ? 'bg-red-600 w-4' : 'bg-gray-600'
                 }`}
               />
             ))}

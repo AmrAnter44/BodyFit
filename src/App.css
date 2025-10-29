@@ -116,64 +116,12 @@ li{
   color:#cd3232;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.1); /* semi-transparent */
-  border-radius: 16px;
-  backdrop-filter: blur(10px); /* glass blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border: 1px solid rgba(244, 235, 235, 0.616); /* subtle border */
-  padding: 20px;
-}
-.glass-white {
-  background: rgba(252, 252, 252, 0.751); /* semi-transparent */
-  border-radius: 16px;
-  backdrop-filter: blur(10px); /* glass blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border: 1px solid rgba(244, 235, 235, 0.616); /* subtle border */
-  padding: 20px;
-}
-.glass-nav {
-  background: rgba(210, 25, 25, 0.27); /* semi-transparent */
-  border-radius: 16px;
-  backdrop-filter: blur(10px); /* glass blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */  
-  padding: 20px;
 
-}
-.glass-button {
-  background: rgba(77, 2, 2, 0.411); /* semi-transparent */
-  border-radius: 16px;
-  backdrop-filter: blur(10px); /* glass blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */  
-  padding: 20px;
-  border: 3px solid white;
-}
-.glass-class {
-  background: rgba(255, 0, 0, 0.272); /* semi-transparent */
-  border-radius: 16px;
-  backdrop-filter: blur(10px); /* glass blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */  
-  padding: 20px;
-}
-.glass-class-ladies {
-  background: rgba(255, 0, 212, 0.272); /* semi-transparent */
-  border-radius: 16px;
-  backdrop-filter: blur(10px); /* glass blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */  
-  padding: 20px;
-}
-.glass-class-mem {
-  background: rgba(255, 31, 31, 0.272); /* semi-transparent */
-  border-radius: 16px;
-  backdrop-filter: blur(10px); /* glass blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */  
-  padding: 20px;
-}
 
 .marquee {
   width: 100%;
   overflow: hidden;
-  background: rgba(255, 35, 35, 0.486);
+  background: rgba(250, 0, 0, 0.486);
   color: white;
   white-space: nowrap;
   position: relative;
