@@ -59,7 +59,7 @@ export default function Classes() {
   ]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-20 px-4">
+    <div className="min-h-screen bg-black py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-5xl font-bold text-center mb-12 text-white">
           <span className="text-red-600">GYM</span> CLASSES

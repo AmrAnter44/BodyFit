@@ -1,35 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import Trans from '../comp/Trans';
-import { supabase } from '../lib/supabaseClient';
-import { Link } from 'react-router-dom';
-
+import Trans from './Trans';
+import Haitham from './../../public/coaches/zema.jpg';
 export default function Coaches() {
-  const [coaches, setCoaches] = useState([]);
-  const [current, setCurrent] = useState(0);
+  // Array الكوتشيز مع البيانات المحلية
+  const coachesData = [
+    {
+      id: 1,
+      name: 'Ahmed Hassan',
+      title: 'Strength Coach',
+      img: './../../public/coaches/zema.jpg',
+      link: 'https://example.com/coach1'
+    },
+    {
+      id: 2,
+      name: 'Fatima Mohamed',
+      title: 'Cardio Trainer',
+      img: './../../public/coaches/zema.jpg',
+      link: 'https://example.com/coach2'
+    },
 
-  useEffect(() => {
-    // fetch الداتا
-    supabase
-      .from('coaches')
-      .select('*')
-      .order('id', { ascending: true })
-      .then(({ data }) => {
-        if (data) setCoaches(data);
-      });
-  }, []);
+  ];
+
+  const [current, setCurrent] = useState(0);
 
   // Auto slide كل 3.5 ثانية
   useEffect(() => {
-    if (coaches.length === 0) return;
+    if (coachesData.length === 0) return;
     
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % coaches.length);
-    }, 3600);
+      setCurrent((prev) => (prev + 1) % coachesData.length);
+    }, 3500);
 
     return () => clearInterval(timer);
-  }, [coaches.length]);
-  console.log(coaches);
-  
+  }, [coachesData.length]);
 
   return (
     <section className="py-8 px-4">
@@ -39,55 +42,55 @@ export default function Coaches() {
           {/* قسم الكوتشيز */}
           <div className="w-full lg:w-1/2">
             <div className="text-center mb-6">
-              <h2 className="text-xl md:text-2xl font-bold text-white gymfont mb-2">
+              <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
                 Our <span className="text-red-600">Coaches</span>
               </h2>
               <div className="w-16 h-1 bg-red-600 mx-auto rounded-full"></div>
             </div>
 
             <div className="max-w-sm mx-auto">
-              <div className="glass rounded-2xl p-4">
-                   
-                {coaches.length === 0 ? (
-                  
+              <div className="bg-black rounded-2xl p-4">
+                {coachesData.length === 0 ? (
                   <div className="text-center py-8">
                     <i className="text-3xl text-red-600 fa-solid fa-spinner fa-spin" />
                   </div>
-                ) :  (<a  href={coaches[current].link} target="_blank">
-                  <div className="bg-black rounded-xl p-4 text-center">
-                    <div className="mb-4">
-                      <h3 className="text-lg md:text-xl font-bold text-white gymfont mb-1">
-                        {coaches[current].name}
-                      </h3>
-                      <p className="text-red-600 text-sm md:text-base font-semibold">
-                        {coaches[current].title}
-                      </p>
-                    </div>
-
-                    <div className="relative mb-4">
-                      <div className="w-36 mx-auto relative overflow-hidden">
-                        <img
-                          className="w-full h-full object-cover"
-                          src={coaches[current].img}
-                          alt={`Coach ${coaches[current].name}`}
-                        />
+                ) : (
+                  <a href={coachesData[current].link} target="_blank" rel="noopener noreferrer" className="block">
+                    <div className="bg-black rounded-xl p-4 text-center">
+                      <div className="mb-4">
+                        <h3 className="text-lg md:text-xl font-bold text-white mb-1">
+                          {coachesData[current].name}
+                        </h3>
+                        <p className="text-red-600 text-sm md:text-base font-semibold">
+                          {coachesData[current].title}
+                        </p>
                       </div>
-                    </div>  
 
-                    {/* Dots للتنقل */}
-                    <div className="flex justify-center gap-2 mt-4">
-                      {coaches.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrent(index)}
-                          className={`w-2 h-2 rounded-full transition-all ${
-                            index === current ? 'bg-red-600 w-4' : 'bg-gray-600'
-                          }`}
-                        />
-                      ))}
-                        
+                      <div className="relative mb-4">
+                        <div className="w-48 mx-auto rounded-lg overflow-hidden">
+                          <img
+                            className="w-48  object-cover"
+                            src={coachesData[current].img}
+                            alt={`Coach ${coachesData[current].name}`}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Dots للتنقل */}
+                      <div className="flex justify-center gap-2 mt-4">
+                        {coachesData.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrent(index)}
+                            className={`transition-all rounded-full ${
+                              index === current 
+                                ? 'bg-red-600 w-4 h-2' 
+                                : 'bg-gray-600 w-2 h-2'
+                            }`}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
                   </a>
                 )}
               </div>
@@ -96,12 +99,16 @@ export default function Coaches() {
 
           {/* قسم التحولات */}
           <div className="w-full lg:w-1/2">
-            <Trans />
+            <div className="text-center">
+              <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+                <Trans></Trans>
+              </h2>
+              <p className="text-gray-400">Coming soon...</p>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
-   
   );
 }

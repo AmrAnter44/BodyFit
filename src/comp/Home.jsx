@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Coaches from '../../src/comp/Coaches';
+import Nav2 from '../Nav2';
 // Mock Coaches component (replace with your actual Coaches component)
 
 
 // Mock data for demonstration
 const mockOffers = [
-  { id: 1, duration: '1 Month', price: '1500', price_new: '1200', private: '4', inbody: '2', invite: '2' },
-  { id: 2, duration: '3 Months', price: '4000', price_new: '3200', private: '12', inbody: '6', invite: '6' },
-  { id: 3, duration: '6 Months', price: '7000', price_new: '5600', private: '24', inbody: '12', invite: '12' },
+  { id: 1, duration: '1 Month', price: '450', price_new: '300', private: '4', inbody: '2', invite: '2' },
+  { id: 2, duration: '3 Months', price: '1350', price_new: '700', private: '12', inbody: '6', invite: '6' },
+  { id: 3, duration: '6 Months', price: '2400', price_new: '1200', private: '24', inbody: '12', invite: '12' },
+  { id: 3, duration: '12 Months', price: '3600', price_new: '1800', private: '24', inbody: '12', invite: '12' },
 ];
 
 const mockPTPackage = {
   id: 1,
   duration: '1 Month',
-  sessions: 12,
-  price: '3600',
-  price_discount: '3000'
+  price: '1500',
+  price_discount: '1000'
 };
 
 export default function Home() {
@@ -46,21 +47,18 @@ export default function Home() {
     window.open(url, "whatsappWindow", "width=600,height=600,top=100,left=200");
   }
 
-  const calculatePricePerSession = (price, sessions) => {
-    return Math.round(price / sessions);
-  };
+
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+    <div className="min-h-screen bg-black">
+      <Nav2></Nav2>
       {/* Hero Section */}
       <div className="relative pt-20 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-red-600/5"></div>
+
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
-              VIP <span className="text-red-600">Body Package</span>
-            </h1>
-            <div className="h-1 w-32 bg-red-600 mx-auto"></div>
+
+
           </div>
         </div>
       </div>
@@ -70,9 +68,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600/20 to-red-800/20 px-8 py-4 rounded-full border-2 border-red-600/50 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-3 bg-black px-8 py-4 rounded-full border-2 border-red-600/50 backdrop-blur-sm">
               <i className="fa-solid fa-star text-3xl text-red-600"></i>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <h2 className="text-3xl md:text-4xl font-bold text-white gymfont">
                 Membership Offers
               </h2>
               <i className="fa-solid fa-star text-3xl text-red-600"></i>
@@ -105,7 +103,7 @@ export default function Home() {
                       <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-red-600 to-red-800 mb-4 transform group-hover:rotate-12 transition-transform duration-500">
                         <i className="fa-solid fa-calendar-days text-3xl text-white"></i>
                       </div>
-                      <h3 className="text-3xl font-bold text-red-500 mb-2">
+                      <h3 className="text-3xl font-bold text-red-500 mb-2 gymfont">
                         {offer.duration}
                       </h3>
                       <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-red-600 to-transparent mx-auto"></div>
