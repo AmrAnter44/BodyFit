@@ -1,77 +1,138 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import React, { useState } from 'react';
 
 export default function Classes() {
-  const [classes, setClasses] = useState([]);
-
-  useEffect(() => {
-    // مباشر وبسيط - fetch لما الصفحة تفتح
-    supabase
-      .from('classes')
-      .select('*')
-      .order('id', { ascending: true })
-      .then(({ data }) => {
-        if (data) setClasses(data);
-      });
-  }, []);
-  console.log(classes);
-  
+  const [classes] = useState([
+    {
+      id: 1,
+      classname: "CrossFit",
+      day: "Monday & Wednesday",
+      coachname: "Ahmed Hassan",
+      time1: "6:00",
+      mix: "Mixed",
+      mem: false
+    },
+    {
+      id: 2,
+      classname: "Yoga Flow",
+      day: "Tuesday & Thursday",
+      coachname: "Sara Mohamed",
+      time1: "5:30",
+      mix: "Ladies",
+      mem: false
+    },
+    {
+      id: 3,
+      classname: "Boxing",
+      day: "Saturday",
+      coachname: "Mahmoud Ali",
+      time1: "7:00",
+      mix: "Mixed",
+      mem: false
+    },
+    {
+      id: 4,
+      classname: "Pilates",
+      day: "Sunday & Tuesday",
+      coachname: "Nour Ibrahim",
+      time1: "4:00",
+      mix: "Ladies",
+      mem: false
+    },
+    {
+      id: 5,
+      classname: "HIIT Training",
+      day: "Monday & Friday",
+      coachname: "Karim Youssef",
+      time1: "8:00",
+      mix: "Mixed",
+      mem: false
+    },
+    {
+      id: 6,
+      classname: "Zumba",
+      day: "Wednesday",
+      coachname: "Laila Ahmed",
+      time1: "6:30",
+      mix: "Ladies",
+      mem: false
+    }
+  ]);
 
   return (
-    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-4 flex-wrap justify-center px-4 my-8 mt-40">
-      {classes.length === 0 ? (
-        <div className="text-center py-8 mt-40">
-          <i className="text-3xl text-red-700 fa-solid fa-spinner fa-spin" />
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-20 px-4">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-5xl font-bold text-center mb-12 text-white">
+          <span className="text-red-600">GYM</span> CLASSES
+        </h1>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {classes.map((classItem) => (
+            <div
+              key={classItem.id}
+              className={`
+                relative overflow-hidden rounded-2xl p-6 
+                transition-all duration-300 hover:scale-105 hover:shadow-2xl
+bg-black
+              `}
+            >
+              {/* Decorative corner */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-red-600/20 rounded-bl-full" />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wider">
+                  {classItem.classname}
+                </h3>
+
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center">
+                      <i className="fas fa-calendar-day text-white text-sm" />
+                    </div>
+                    <p className="text-gray-300 font-medium">{classItem.day}</p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center">
+                      <i className="fas fa-user text-white text-sm" />
+                    </div>
+                    <p className="text-gray-300 font-medium">{classItem.coachname}</p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center">
+                      <i className="fa-regular fa-clock text-white text-sm" />
+                    </div>
+                    <p className="text-gray-300 font-medium">
+                      <span className="text-xl text-red-400">{classItem.time1}</span>
+                      <span className="ml-1">PM</span>
+                    </p>
+                  </div>
+
+                  <div className={`
+                    inline-block px-4 py-2 rounded-full font-semibold text-sm
+                    ${classItem.mix === "Ladies" 
+                      ? "bg-pink-600 text-white" 
+                      : "bg-white text-black"
+                    }
+                  `}>
+                    {classItem.mix}
+                  </div>
+                </div>
+
+                {classItem.mem && (
+                  <div className="mt-4 flex items-center gap-2 bg-red-600/80 text-white px-3 py-2 rounded-lg">
+                    <i className="fas fa-exclamation-triangle" />
+                    <span className="text-sm font-semibold">Out of Membership</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+            </div>
+          ))}
         </div>
-      ) : (
-        classes.map((classItem) => (
-          <div
-            key={classItem.id}
-            className={`
-              min-w-[280px] border-2 p-6 rounded-xl flex flex-col justify-center text-center shadow-lg
-              ${classItem.mem 
-                ? "bg-red-500/10 border-red-500/30 backdrop-blur-md" 
-                : classItem.mix === "Ladies" 
-                ? "bg-gray-500/10 border-gray-500/30 backdrop-blur-md " 
-                : "bg-slate-500/10 border-slate-500/20 backdrop-blur-md"
-              } 
-            `}
-          >
-            <h3 className="p-2 font-bold text-xl gymfont">
-              {classItem.classname}
-            </h3>
-
-            <h4 className="p-2 font-semibold text-lg">
-              Day: {classItem.day}
-            </h4>
-
-            <h5 className='p-2 font-semibold text-lg'>
-              <span className="text-xl px-1">
-                <span>Coach: </span>{classItem.coachname}
-              </span>
-            </h5>
-
-            <p className="p-2 font-semibold text-lg">
-              <i className="fa-regular fa-clock" />
-              {" "}At:{" "}
-              <span className="text-xl px-1">{classItem.time1}</span> 
-              <span>pm</span>
-            </p>
-
-            <p className={`p-2 font-semibold text-lg 
-                          ${classItem.mix == "Ladies" ? "text-fuchsia-400" : ""}
-            `}>
-              {classItem.mix}
-            </p>
-
-            {classItem.mem && (
-              <span className="text-sm px-1 text-red-400">
-                Out of Membership
-              </span>
-            )}
-          </div>
-        ))
-      )}
+      </div>
     </div>
   );
 }

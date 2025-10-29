@@ -1,51 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import Coaches from './Coaches';
-import { Link } from 'react-router-dom';
-import Nav2 from '../Nav2';
-import { supabase } from '../lib/supabaseClient';
+import Coaches from '../../src/comp/Coaches';
+// Mock Coaches component (replace with your actual Coaches component)
+
+
+// Mock data for demonstration
+const mockOffers = [
+  { id: 1, duration: '1 Month', price: '1500', price_new: '1200', private: '4', inbody: '2', invite: '2' },
+  { id: 2, duration: '3 Months', price: '4000', price_new: '3200', private: '12', inbody: '6', invite: '6' },
+  { id: 3, duration: '6 Months', price: '7000', price_new: '5600', private: '24', inbody: '12', invite: '12' },
+];
+
+const mockPTPackage = {
+  id: 1,
+  duration: '1 Month',
+  sessions: 12,
+  price: '3600',
+  price_discount: '3000'
+};
 
 export default function Home() {
   const [offers, setOffers] = useState([]);
-  const [offers33, setOffers33] = useState([]);
-  const [ptPackages, setPtPackages] = useState([]);
-  const [showOffers, setShowOffers] = useState(false);
-  const [showOffers33, setShowOffers33] = useState(false);
-  const [showPT, setShowPT] = useState(false);
+  const [ptPackage, setPtPackage] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // fetch العروض العادية
-    supabase
-      .from('offers')
-      .select('*')
-      .order('id', { ascending: true })
-      .then(({ data }) => {
-        if (data) {
-          setOffers(data);
-          
-          // حساب العروض بخصم 33%
-          const discountedOffers = data.map(offer => {
-            const originalPrice = parseFloat(offer.price);
-            const priceAfterDiscount = originalPrice * 0.67;
-            const discountedPrice = Math.round(priceAfterDiscount / 10) * 10;
-            
-            return {
-              ...offer,
-              price: originalPrice,
-              price_new: discountedPrice
-            };
-          });
-          setOffers33(discountedOffers);
-        }
-      });
-
-    // fetch باقات PT
-    supabase
-      .from('pt_packages')
-      .select('*')
-      .order('sessions', { ascending: true })
-      .then(({ data }) => {
-        if (data) setPtPackages(data);
-      });
+    // Simulate data fetch
+    setTimeout(() => {
+      setOffers(mockOffers);
+      setPtPackage(mockPTPackage);
+      setIsVisible(true);
+    }, 300);
   }, []);
 
   function handlebook(offer) {
@@ -57,218 +41,307 @@ export default function Home() {
 
   function handlePTBook(ptPackage) {
     const phone = "201028188900";  
-    const message = `Hello, I would like to book ${ptPackage.sessions} PT Sessions.`;
+    const message = `Hello, I would like to book ${ptPackage.sessions} PT Sessions for ${ptPackage.duration}.`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "whatsappWindow", "width=600,height=600,top=100,left=200");
   }
 
-  // حساب سعر الحصة الواحدة
   const calculatePricePerSession = (price, sessions) => {
     return Math.round(price / sessions);
   };
 
   return (
-    <>
-      {/* <Nav2 /> */}//////////////////////////////////////////////
-      
-      <div className="mt-20">
-        {/* ==================== VIP GOLD ==================== */}
-        <h2 className='text-xl pt-9 text-white font-semibold gymfont'>
-          VIP Body Package
-        </h2>
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+      {/* Hero Section */}
+      <div className="relative pt-20 pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-red-600/5"></div>
+        <div className="relative max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+              VIP <span className="text-red-600">Body Package</span>
+            </h1>
+            <div className="h-1 w-32 bg-red-600 mx-auto"></div>
+          </div>
+        </div>
+      </div>
 
+      {/* Membership Offers Section - الأول */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600/20 to-red-800/20 px-8 py-4 rounded-full border-2 border-red-600/50 backdrop-blur-sm">
+              <i className="fa-solid fa-star text-3xl text-red-600"></i>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                Membership Offers
+              </h2>
+              <i className="fa-solid fa-star text-3xl text-red-600"></i>
+            </div>
+            <p className="text-gray-400 mt-4 text-lg">Choose the perfect plan for your fitness journey</p>
+          </div>
 
-
-        {/* ==================== قسم PT (الجديد) ==================== */}
-        <div className='w-full py-9'>
-          <div className="max-w-4xl mx-auto px-4">
-            {/* الزر الأخضر */}
-            <button
-              onClick={() => setShowPT(!showPT)}
-              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-red-600 font-bold gymfont bg-white hover:bg-white/80 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
-            >
-              <i className="fa-solid fa-dumbbell"></i>
-              Personal Training (PT)
-              <i className={`fas fa-chevron-${showPT ? 'up' : 'down'} transition-transform duration-300`}></i>
-            </button>
-
-            {/* محتوى PT عند الفتح */}
-            {showPT && (
-              <div className='pt-6 animate-fade-in'>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                  {ptPackages.length === 0 ? (
-                    <div className="col-span-full text-center py-8">
-                      <i className="text-3xl text-white fa-solid fa-spinner fa-spin" />
-                      <p className="text-red-600 mt-4">Loading PT Packages...</p>
+          {/* Offers Cards */}
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            {offers.length === 0 ? (
+              <div className="col-span-full text-center py-16">
+                <i className="text-5xl text-red-600 fa-solid fa-spinner fa-spin" />
+              </div>
+            ) : (
+              offers.map((offer, index) => (
+                <div 
+                  key={offer.id}
+                  className="group relative bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-red-600/30"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-600/0 via-red-600/0 to-red-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Border */}
+                  <div className="absolute inset-0 rounded-2xl border-2 border-red-600/30 group-hover:border-red-600/60 transition-all duration-500"></div>
+                  
+                  <div className="relative p-8">
+                    {/* Header */}
+                    <div className="text-center mb-6">
+                      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-red-600 to-red-800 mb-4 transform group-hover:rotate-12 transition-transform duration-500">
+                        <i className="fa-solid fa-calendar-days text-3xl text-white"></i>
+                      </div>
+                      <h3 className="text-3xl font-bold text-red-500 mb-2">
+                        {offer.duration}
+                      </h3>
+                      <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-red-600 to-transparent mx-auto"></div>
                     </div>
-                  ) : (
-                    ptPackages.map((pkg) => {
-                      const hasDiscount = pkg.price_discount && parseFloat(pkg.price_discount) > 0;
-                      const finalPrice = hasDiscount ? parseFloat(pkg.price_discount) : parseFloat(pkg.price);
-                      const pricePerSession = calculatePricePerSession(finalPrice, pkg.sessions);
 
-                      return (
-                        <div key={pkg.id} className="bg-black/80 p-4 rounded-lg border border-red-600/80">
-                          <div className=" text-red-600 p-3 rounded-t-lg">
-                            <h3 className='font-bold text-2xl gymfont text-center'>
-                              <i className="fa-solid fa-dumbbell pr-2"></i> 
-                              {pkg.sessions} Sessions
-                            </h3>
-                          </div>
-
-                          <div className='p-4'>
-                            {/* السعر */}
-                            <div className='mb-4'>
-                              <p className='text-sm text-gray-400 mb-1'>Total Price:</p>
-                              <div className='flex items-center justify-between'>
-                                {hasDiscount ? (
-                                  <>
-                                    <span className="text-lg line-through text-gray-400">
-                                      {pkg.price} EGP
-                                    </span>
-                                    <span className="text-2xl font-bold text-red-600">
-                                      {pkg.price_discount} EGP
-                                    </span>
-                                  </>
-                                ) : (
-                                  <span className="text-2xl font-bold text-white">
-                                    {pkg.price} EGP
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-
-                            {/* سعر الحصة الواحدة */}
-                            <div className='bg-red-900/30 p-3 rounded-lg mb-4 border border-red-600/70'>
-                              <p className='text-sm text-gray-300 mb-1 text-center'>Price per session:</p>
-                              <div className='flex items-center justify-center gap-2'>
-                                <i className="fa-solid fa-tag text-red-600"></i>
-                                <span className='text-3xl font-bold text-red-600'>
-                                  {pricePerSession} EGP
-                                </span>
-                              </div>
-                            </div>
-
-                            {/* تفاصيل إضافية */}
-                            <ul className='text-start text-gray-300 space-y-2 mb-4'>
-                              <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-red-600'></i>
-                                <span>{pkg.sessions} Personal Training Sessions</span>
-                              </li>
-                              <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-red-600'></i>
-                                <span>Professional Coach</span>
-                              </li>
-                              <li className='flex items-center gap-2'>
-                                <i className='fa-solid fa-check text-red-600'></i>
-                                <span>Customized Training Plan</span>
-                              </li>
-                            </ul>
-
-                            {/* زر الحجز */}
-                            <button
-                              onClick={() => handlePTBook(pkg)}
-                              className='w-full px-4 text-lg py-2 bg-red-600 text-white rounded-lg hover:bg-red-600 transition-all duration-300 font-bold'
-                            >
-                              Book Now
-                            </button>
+                    {/* Price */}
+                    <div className="text-center mb-6">
+                      {offer.price_new && offer.price_new !== "0" ? (
+                        <div>
+                          <span className="text-xl line-through text-gray-500 block mb-1">
+                            {offer.price} EGP
+                          </span>
+                          <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">
+                            {offer.price_new} EGP
                           </div>
                         </div>
-                      );
-                    })
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* ==================== قسم العروض العادية ==================== */}
-        <div className='w-full py-9'>
-          <div className="max-w-4xl mx-auto px-4">
-            <button
-              onClick={() => setShowOffers(!showOffers)}
-              className='w-full max-w-2xl mx-auto text-2xl md:text-3xl text-white font-bold gymfont bg-red-600 hover:bg-red-600 px-6 md:px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg'
-            >
-              Our Offers
-              <i className={`fas fa-chevron-${showOffers ? 'up' : 'down'} transition-transform duration-300`}></i>
-            </button>
-
-            {showOffers && (
-              <div className='pt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in'>
-                {offers.length === 0 ? (
-                  <div className="col-span-full text-center py-8">
-                    <i className="text-3xl text-red-600 fa-solid fa-spinner fa-spin" />
-                  </div>
-                ) : (
-                  offers.map((offer) => (
-                    <div key={offer.id} className="bg-black/80 p-4 rounded-lg border border-red-600/70">
-                      <h3 className='p-1 font-bold text-xl gymfont text-red-600'>
-                        <i className="fa-solid fa-dumbbell pr-2"></i> {offer.duration}
-                      </h3>
-
-                      <div className='flex justify-between'>
-                        {offer.price_new && offer.price_new !== "0" ? (
-                          <>
-                            <h3 className="p-1 font-bold text-lg line-through text-gray-400">
-                              {offer.price} EGP
-                            </h3>
-                            <h3 className="p-1 font-bold text-lg text-red-600">
-                              {offer.price_new} EGP
-                            </h3>
-                          </>
-                        ) : (
-                          <h3 className="p-1 font-bold text-lg">
-                            {offer.price} EGP
-                          </h3>
-                        )}
-                      </div>
-
-                      <ul className='p-1 text-start text-white-600'>
-                        <li className='p-1 font-semibold'>
-                          <i className='pr-1 fa-solid fa-check'></i> {offer.private} Sessions Personal Training
-                        </li>
-                        <li className='p-1 font-semibold'>
-                          <i className='pr-1 fa-solid fa-check'></i> {offer.inbody} Sessions In Inbody
-                        </li>
-                        <li className='p-1 font-semibold'>
-                          <i className='pr-1 fa-solid fa-check'></i> {offer.invite} Sessions Invitations
-                        </li>
-                        <li className='p-1 font-semibold'>
-                          <i className='pr-1 fa-solid fa-check'></i> ALL Classes
-                        </li>
-                        <li className='p-1 font-semibold'>
-                          <i className='pr-1 fa-solid fa-check'></i> SPA
-                        </li>
-                      </ul>
-
-                            <button
-                              onClick={() => handlePTBook(pkg)}
-                              className='w-full px-4 text-lg py-2 bg-red-600 text-white rounded-lg hover:bg-red-600 transition-all duration-300 font-bold'
-                            >
-                              Book Now
-                            </button>
+                      ) : (
+                        <div className="text-4xl font-bold text-white">
+                          {offer.price} EGP
+                        </div>
+                      )}
                     </div>
-                  ))
-                )}
-              </div>
+
+                    {/* Features */}
+                    <ul className="space-y-3 mb-8">
+                      <li className="flex items-center gap-3 text-gray-300 group/item hover:text-white transition-colors">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center group-hover/item:bg-red-600/40 transition-colors">
+                          <i className="fa-solid fa-check text-red-500 text-xs"></i>
+                        </div>
+                        <span>{offer.private} Sessions Personal Training</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-gray-300 group/item hover:text-white transition-colors">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center group-hover/item:bg-red-600/40 transition-colors">
+                          <i className="fa-solid fa-check text-red-500 text-xs"></i>
+                        </div>
+                        <span>{offer.inbody} Sessions InBody</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-gray-300 group/item hover:text-white transition-colors">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center group-hover/item:bg-red-600/40 transition-colors">
+                          <i className="fa-solid fa-check text-red-500 text-xs"></i>
+                        </div>
+                        <span>{offer.invite} Guest Invitations</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-gray-300 group/item hover:text-white transition-colors">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center group-hover/item:bg-red-600/40 transition-colors">
+                          <i className="fa-solid fa-check text-red-500 text-xs"></i>
+                        </div>
+                        <span>ALL Classes</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-gray-300 group/item hover:text-white transition-colors">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center group-hover/item:bg-red-600/40 transition-colors">
+                          <i className="fa-solid fa-check text-red-500 text-xs"></i>
+                        </div>
+                        <span>SPA Access</span>
+                      </li>
+                    </ul>
+
+                    {/* Book Button */}
+                    <button
+                      onClick={() => handlebook(offer)}
+                      className="w-full py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl font-bold text-lg 
+                               transform transition-all duration-300 hover:from-red-700 hover:to-red-800 hover:shadow-lg hover:shadow-red-600/50
+                               active:scale-95 relative overflow-hidden group/btn"
+                    >
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <i className="fa-brands fa-whatsapp text-xl"></i>
+                        Book Now
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
+                    </button>
+                  </div>
+                </div>
+              ))
             )}
           </div>
         </div>
+      </section>
 
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="h-px bg-gradient-to-r from-transparent via-red-600/50 to-transparent"></div>
+      </div>
 
-        <div className="marquee">
-          <p className="ml-11">
-            <span># ONE MORE REP</span> &nbsp; &nbsp; 
-            <span># ONE MORE REP</span> &nbsp; &nbsp; 
-            <span># ONE MORE REP</span> &nbsp; &nbsp; 
-            <span># ONE MORE REP</span> &nbsp; &nbsp;
+      <section className="py-16 px-4 bg-gradient-to-br from-red-600 via-red-700 to-red-800 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-8 py-4 rounded-full border-2 border-white/30">
+            <i className="fa-solid fa-fire text-4xl text-white"></i>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Personal Training Package
+            </h2>
+            <i className="fa-solid fa-fire text-4xl text-white"></i>
+          </div>
+          <p className="text-white/90 mt-4 text-lg font-semibold">
+            Exclusive one-on-one training with professional coaches
           </p>
         </div>
 
-        <Coaches />
+        {/* PT Card - Horizontal Layout */}
+        <div className="w-full max-w-5xl mx-auto">
+          {ptPackage ? (
+            <div 
+              className={`group relative bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden transform transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-black/50 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            >
+              {/* Shine Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-600/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              
+              {/* Border Glow */}
+              <div className="absolute inset-0 rounded-3xl border-4 border-red-600/0 group-hover:border-red-600/50 transition-all duration-500"></div>
+              
+              <div className="relative p-8">
+                {/* Horizontal Flex Container */}
+                <div className="flex items-center justify-between gap-8">
+                  
+                  {/* Icon + Duration */}
+                  <div className="flex items-center gap-6">
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-red-600 to-red-800 shadow-2xl shadow-red-600/50 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 flex-shrink-0">
+                      <i className="fa-solid fa-dumbbell text-3xl text-white"></i>
+                    </div>
+                    <h3 className="text-3xl font-bold text-red-600">
+                      {ptPackage.duration}
+                    </h3>
+                  </div>
 
+                  {/* Price */}
+                  <div className="text-center flex-shrink-0">
+                    {ptPackage.price_discount && parseFloat(ptPackage.price_discount) > 0 ? (
+                      <div>
+                        <span className="text-xl line-through text-gray-400 block">
+                          {ptPackage.price} EGP
+                        </span>
+                        <div className="text-5xl font-bold text-red-600">
+                          {ptPackage.price_discount} <span className="text-2xl">EGP</span>
+                        </div>
+                        <div className="inline-block mt-2 px-3 py-1 bg-red-600 text-white rounded-full text-xs font-bold">
+                          Save {parseFloat(ptPackage.price) - parseFloat(ptPackage.price_discount)} EGP
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-5xl font-bold text-red-600">
+                        {ptPackage.price} <span className="text-2xl">EGP</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Book Button */}
+                  <button
+                    onClick={() => handlePTBook(ptPackage)}
+                    className="py-4 px-8 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-2xl font-bold text-xl 
+                             transform transition-all duration-300 hover:from-red-700 hover:to-red-900 hover:shadow-2xl hover:shadow-red-600/50
+                             active:scale-95 relative overflow-hidden group/btn flex-shrink-0"
+                  >
+                    <span className="relative z-10 flex items-center justify-center gap-3 whitespace-nowrap">
+                      <i className="fa-brands fa-whatsapp text-2xl"></i>
+                      Book Now
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <i className="text-6xl text-white fa-solid fa-spinner fa-spin" />
+              <p className="text-white mt-6 text-xl">Loading PT Package...</p>
+            </div>
+          )}
+        </div>
       </div>
-    </>
+    </section>
+
+      {/* Motivational Banner */}
+      <div className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-red-800/20"></div>
+        <div className="relative">
+          <div className="flex overflow-hidden">
+            <div className="flex animate-marquee whitespace-nowrap">
+              {[...Array(4)].map((_, i) => (
+                <span key={i} className="text-4xl md:text-6xl font-bold text-white/10 mx-8">
+                  # ONE MORE REP
+                </span>
+              ))}
+            </div>
+            <div className="flex animate-marquee whitespace-nowrap" aria-hidden="true">
+              {[...Array(4)].map((_, i) => (
+                <span key={i} className="text-4xl md:text-6xl font-bold text-white/10 mx-8">
+                  # ONE MORE REP
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Coaches Section */}
+      <Coaches />
+
+      <style>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
+
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out;
+        }
+      `}</style>
+    </div>
   );
 }

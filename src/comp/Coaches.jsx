@@ -65,7 +65,7 @@ export default function Coaches() {
                     </div>
 
                     <div className="relative mb-4">
-                      <div className="h-42 w-36 mx-auto relative overflow-hidden">
+                      <div className="w-36 mx-auto relative overflow-hidden">
                         <img
                           className="w-full h-full object-cover"
                           src={coaches[current].img}

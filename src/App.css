@@ -72,7 +72,7 @@ body {
 }
 
 .gympng {
-  background-image: url("/assets/bg.png");
+  /* background-image: url("/assets/bg.png"); */
   background-position: center;
   background-repeat: repeat;
   height: 100%;
