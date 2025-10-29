@@ -34,14 +34,14 @@ export default function Home() {
   }, []);
 
   function handlebook(offer) {
-    const phone = "201028188900";  
+    const phone = "201055608765";  
     const message = `Hello, I would like to book the ${offer.duration} offer.`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "whatsappWindow", "width=600,height=600,top=100,left=200");
   }
 
   function handlePTBook(ptPackage) {
-    const phone = "201028188900";  
+    const phone = "201055608765";  
     const message = `Hello, I would like to book ${ptPackage.sessions} PT Sessions for ${ptPackage.duration}.`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "whatsappWindow", "width=600,height=600,top=100,left=200");
