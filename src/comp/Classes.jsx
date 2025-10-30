@@ -2,62 +2,60 @@ import React, { useState } from 'react';
 
 export default function Classes() {
   const [classes] = useState([
-[
-  {
-    id: 1,
-    classname: "Upper Body",
-    day: "Saturday",
-    coachname: "Zinab",
-    time1: "12:00",
-    mix: "Ladies",
-    mem: false
-  },
-  {
-    id: 2,
-    classname: "Lower Body",
-    day: "Sunday",
-    coachname: "Zinab",
-    time1: "12:00",
-    mix: "Ladies",
-    mem: false
-  },
-  {
-    id: 3,
-    classname: "Cardio",
-    day: "Monday",
-    coachname: "Basmala",
-    time1: "12:00",
-    mix: "Ladies",
-    mem: false
-  },
-  {
-    id: 4,
-    classname: "Fitness",
-    day: "Tuesday",
-    coachname: "Basmala",
-    time1: "11:00",
-    mix: "Ladies",
-    mem: false
-  },
-  {
-    id: 5,
-    classname: "Zumba",
-    day: "Wednesday",
-    coachname: "Basmala",
-    time1: "12:00",
-    mix: "Ladies",
-    mem: false
-  },
-  {
-    id: 6,
-    classname: "Full Body",
-    day: "Thursday",
-    coachname: "Zinab",
-    time1: "12:00",
-    mix: "Ladies",
-    mem: false
-  }
-]
+    {
+      id: 1,
+      classname: "Upper Body",
+      day: "Saturday",
+      coachname: "Zinab",
+      time1: "12:00",
+      mix: "Ladies",
+      mem: false
+    },
+    {
+      id: 2,
+      classname: "Lower Body",
+      day: "Sunday",
+      coachname: "Zinab",
+      time1: "12:00",
+      mix: "Ladies",
+      mem: false
+    },
+    {
+      id: 3,
+      classname: "Cardio",
+      day: "Monday",
+      coachname: "Basmala",
+      time1: "12:00",
+      mix: "Ladies",
+      mem: false
+    },
+    {
+      id: 4,
+      classname: "Fitness",
+      day: "Tuesday",
+      coachname: "Basmala",
+      time1: "11:00",
+      mix: "Ladies",
+      mem: false
+    },
+    {
+      id: 5,
+      classname: "Zumba",
+      day: "Wednesday",
+      coachname: "Basmala",
+      time1: "12:00",
+      mix: "Ladies",
+      mem: false
+    },
+    {
+      id: 6,
+      classname: "Full Body",
+      day: "Thursday",
+      coachname: "Zinab",
+      time1: "12:00",
+      mix: "Ladies",
+      mem: false
+    }
   ]);
 
 
