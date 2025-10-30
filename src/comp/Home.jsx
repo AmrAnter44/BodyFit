@@ -298,7 +298,7 @@ export default function Home() {
             </div>
             <div className="flex animate-marquee whitespace-nowrap" aria-hidden="true">
               {[...Array(4)].map((_, i) => (
-                <span key={i} className="text-4xl md:text-6xl font-bold text-white mx-8">
+                <span key={i} className="text-4xl md:text-6xl font-bold text-red-600 mx-8">
                   # ONE MORE REP
                 </span>
               ))}

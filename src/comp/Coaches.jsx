@@ -100,10 +100,10 @@ export default function Coaches() {
           {/* قسم التحولات */}
           <div className="w-full lg:w-1/2">
             <div className="text-center">
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+              <div className="text-xl md:text-2xl font-bold text-white mb-4">
                 <Trans></Trans>
-              </h2>
-              <p className="text-gray-400">Coming soon...</p>
+              </div>
+
             </div>
           </div>
 
