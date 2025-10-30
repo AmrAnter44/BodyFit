@@ -291,14 +291,14 @@ export default function Home() {
           <div className="flex overflow-hidden">
             <div className="flex animate-marquee whitespace-nowrap">
               {[...Array(4)].map((_, i) => (
-                <span key={i} className="text-4xl md:text-6xl font-bold text-white/40 mx-8">
+                <span key={i} className="text-4xl md:text-6xl font-bold text-red-600 mx-8">
                   # ONE MORE REP
                 </span>
               ))}
             </div>
             <div className="flex animate-marquee whitespace-nowrap" aria-hidden="true">
               {[...Array(4)].map((_, i) => (
-                <span key={i} className="text-4xl md:text-6xl font-bold text-white/10 mx-8">
+                <span key={i} className="text-4xl md:text-6xl font-bold text-white mx-8">
                   # ONE MORE REP
                 </span>
               ))}
