@@ -57,7 +57,8 @@ export default function Classes() {
     mix: "Ladies",
     mem: false
   }
-];
+]
+  ]);
 
 
   return (
