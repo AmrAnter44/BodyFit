@@ -229,10 +229,10 @@ export default function Home() {
                   
                   {/* Icon + Duration */}
                   <div className="flex items-center gap-6">
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-red-600 to-red-800 shadow-2xl shadow-red-600/50 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 flex-shrink-0">
-                      <i className="fa-solid fa-dumbbell text-3xl text-white"></i>
-                    </div>
-                    <h3 className="text-3xl font-bold text-red-600">
+     
+                      <i className="fa-solid fa-dumbbell text-3xl text-red-600"></i>
+
+                    <h3 className="text-xl lg:text-3xl font-bold text-red-600">
                       {ptPackage.duration}
                     </h3>
                   </div>
@@ -241,27 +241,28 @@ export default function Home() {
                   <div className="text-center flex-shrink-0">
                     {ptPackage.price_discount && parseFloat(ptPackage.price_discount) > 0 ? (
                       <div>
-                        <span className="text-xl line-through text-gray-400 block">
+                        <span className="text-l line-through text-gray-400 block">
                           {ptPackage.price} EGP
                         </span>
-                        <div className="text-5xl font-bold text-red-600">
+                        <div className="lg:text-5xl text-2xl font-bold text-red-600">
                           {ptPackage.price_discount} <span className="text-2xl">EGP</span>
                         </div>
-                        <div className="inline-block mt-2 px-3 py-1 bg-red-600 text-white rounded-full text-xs font-bold">
-                          Save {parseFloat(ptPackage.price) - parseFloat(ptPackage.price_discount)} EGP
-                        </div>
+
                       </div>
                     ) : (
-                      <div className="text-5xl font-bold text-red-600">
+                      <div className="text-l font-bold text-red-600">
                         {ptPackage.price} <span className="text-2xl">EGP</span>
                       </div>
                     )}
                   </div>
 
                   {/* Book Button */}
-                  <button
+
+
+                </div>
+                                  <button
                     onClick={() => handlePTBook(ptPackage)}
-                    className="py-4 px-8 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-2xl font-bold text-xl 
+                    className="py-2 px-4 mt-4  lg:py-4 lg:px-8 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-2xl font-bold text-xl 
                              transform transition-all duration-300 hover:from-red-700 hover:to-red-900 hover:shadow-2xl hover:shadow-red-600/50
                              active:scale-95 relative overflow-hidden group/btn flex-shrink-0"
                   >
@@ -271,8 +272,6 @@ export default function Home() {
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
                   </button>
-
-                </div>
               </div>
             </div>
           ) : (
@@ -287,12 +286,12 @@ export default function Home() {
 
       {/* Motivational Banner */}
       <div className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-red-800/20"></div>
+        <div className="absolute inset-0 "></div>
         <div className="relative">
           <div className="flex overflow-hidden">
             <div className="flex animate-marquee whitespace-nowrap">
               {[...Array(4)].map((_, i) => (
-                <span key={i} className="text-4xl md:text-6xl font-bold text-white/10 mx-8">
+                <span key={i} className="text-4xl md:text-6xl font-bold text-white/40 mx-8">
                   # ONE MORE REP
                 </span>
               ))}
