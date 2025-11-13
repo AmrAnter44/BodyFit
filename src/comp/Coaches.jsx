@@ -8,14 +8,21 @@ export default function Coaches() {
       id: 1,
       name: 'Ahmed Hassan',
       title: 'Strength Coach',
-      img: './../../public/coaches/zema.jpg',
+      img: './../../public/coaches/1.jpg',
       link: 'https://example.com/coach1'
     },
     {
       id: 2,
       name: 'Fatima Mohamed',
       title: 'Cardio Trainer',
-      img: './../../public/coaches/zema.jpg',
+      img: './../../public/coaches/1.jpg',
+      link: 'https://example.com/coach2'
+    },
+    {
+      id: 2,
+      name: 'Abdelrhman Mohamed',
+      title: 'Cardio Trainer',
+      img: './../../public/coaches/1.jpg',
       link: 'https://example.com/coach2'
     },
 

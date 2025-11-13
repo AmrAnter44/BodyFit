@@ -6,10 +6,10 @@ import Nav2 from '../Nav2';
 
 // Mock data for demonstration
 const mockOffers = [
-  { id: 1, duration: '1 Month', price: '450', price_new: '300', private: '4', inbody: '2', invite: '2' },
-  { id: 2, duration: '3 Months', price: '1350', price_new: '700', private: '12', inbody: '6', invite: '6' },
-  { id: 3, duration: '6 Months', price: '2400', price_new: '1200', private: '24', inbody: '12', invite: '12' },
-  { id: 3, duration: '12 Months', price: '3600', price_new: '1800', private: '24', inbody: '12', invite: '12' },
+  { id: 1, duration: '1 Month', price: '450', price_new: '300', private: '1',invite: '1' },
+  { id: 2, duration: '3 Months', price: '1350', price_new: '700', private: '2',  invite: '2' },
+  { id: 3, duration: '6 Months', price: '2400', price_new: '1200', private: '4',  invite: '4' },
+  { id: 3, duration: '12 Months', price: '3600', price_new: '1800', private: '8',  invite: '8' },
 ];
 
 const mockPTPackage = {
@@ -135,12 +135,7 @@ export default function Home() {
                         </div>
                         <span>{offer.private} Sessions Personal Training</span>
                       </li>
-                      <li className="flex items-center gap-3 text-gray-300 group/item hover:text-white transition-colors">
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center group-hover/item:bg-red-600/40 transition-colors">
-                          <i className="fa-solid fa-check text-red-500 text-xs"></i>
-                        </div>
-                        <span>{offer.inbody} Sessions InBody</span>
-                      </li>
+
                       <li className="flex items-center gap-3 text-gray-300 group/item hover:text-white transition-colors">
                         <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center group-hover/item:bg-red-600/40 transition-colors">
                           <i className="fa-solid fa-check text-red-500 text-xs"></i>
@@ -152,12 +147,6 @@ export default function Home() {
                           <i className="fa-solid fa-check text-red-500 text-xs"></i>
                         </div>
                         <span>ALL Classes</span>
-                      </li>
-                      <li className="flex items-center gap-3 text-gray-300 group/item hover:text-white transition-colors">
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600/20 flex items-center justify-center group-hover/item:bg-red-600/40 transition-colors">
-                          <i className="fa-solid fa-check text-red-500 text-xs"></i>
-                        </div>
-                        <span>SPA Access</span>
                       </li>
                     </ul>
 
