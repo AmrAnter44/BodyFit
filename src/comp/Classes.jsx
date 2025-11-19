@@ -58,6 +58,8 @@ export default function Classes() {
     }
   ]);
 
+  
+
 
   return (
     <div className="min-h-screen bg-black py-20 px-4">
