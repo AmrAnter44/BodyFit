@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Trans from './Trans';
-import Haitham from './../../public/coaches/zema.jpg';
 export default function Coaches() {
   // Array الكوتشيز مع البيانات المحلية
   const coachesData = [
@@ -8,29 +7,29 @@ export default function Coaches() {
       id: 1,
       name: 'Ahmed Talat',
       title: 'Genral Trainer',
-      img: './../../public/coaches/1.jpg',
-      link: 'https://example.com/coach1'
+      img: './../../public/coaches/tal3at.png',
+      link: 'https://example.com/tal3at'
     },
     {
       id: 2,
       name: 'Hazem',
       title: 'Personal Trainer',
-      img: './../../public/coaches/1.jpg',
-      link: 'https://example.com/coach2'
+      img: './../../public/coaches/hazem.png',
+      link: 'instagram.com/_hazem.adel_?igsh=MTl4aDY1NmJmeG5obA=='
     },
     {
       id: 3,
       name: 'Abdelrhman',
       title: 'Personal Trainer',
-      img: './../../public/coaches/1.jpg',
-      link: 'https://example.com/coach2'
+      img: './../../public/coaches/abdo.png',
+      link: 'https://example.com/abdo'
     },
     {
       id: 4,
       name: 'Zinap',
       title: 'Personal Trainer',
-      img: './../../public/coaches/1.jpg',
-      link: 'https://example.com/coach2'
+      img: './../../public/coaches/zinap.png',
+      link: 'https://example.com/zinap'
     },
 
   ];

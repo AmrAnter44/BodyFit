@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Coaches from './Coaches';
 
 const mockOffers = [
   { id: 1, duration: '1 Month', price: '450', price_new: '350', private: '1',invite: '1' },
@@ -332,6 +333,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="h-px bg-gradient-to-r from-transparent via-red-600/50 to-transparent"></div>
+      </div>
+
+      {/* Coaches Section */}
+      <Coaches />
     </div>
   );
 }
