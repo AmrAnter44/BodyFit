@@ -8,7 +8,7 @@ export default function Coaches() {
       name: 'Ahmed Talat',
       title: 'Genral Trainer',
       img: './../../public/coaches/tal3at.png',
-      link: 'https://example.com/tal3at'
+      link: 'https://www.instagram.com/_ahmedtalaat7?igsh=MXYzZ3VuZzBnZG9neA%3D%3D&utm_source=qr'
     },
     {
       id: 2,
@@ -22,14 +22,14 @@ export default function Coaches() {
       name: 'Abdelrhman',
       title: 'Personal Trainer',
       img: './../../public/coaches/abdo.png',
-      link: 'https://example.com/abdo'
+      link: 'https://www.instagram.com/abdulrahmanmatloub?igsh=d2ozY2I1dXpxcjhp%E2%80%8E%E2%80%8F'
     },
     {
       id: 4,
       name: 'Zinap',
       title: 'Personal Trainer',
       img: './../../public/coaches/zinap.png',
-      link: 'https://example.com/zinap'
+      link: '/'
     },
 
   ];
