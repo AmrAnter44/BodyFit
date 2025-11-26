@@ -24,7 +24,22 @@ export default function Footer() {
         <div>
           <img src="/pay.png" alt="" className="w-44 mr-8 mt-4" />
         </div>
+       
       </footer>
+               <p className="text-white/70 text-sm">
+          Powered by{" "}
+          <a 
+            href="https://fitboost.website/" 
+            className="text-red-600 font-bold hover:text-red-500 transition-colors my-6"
+            whileHover={{ 
+              scale: 1.05,
+              textShadow: "0 0 10px rgba(220, 38, 38, 0.8)"
+            }}
+          >
+            FitBoost
+          </a>
+          {" "}© {new Date().getFullYear()}
+        </p>
 
  
 
