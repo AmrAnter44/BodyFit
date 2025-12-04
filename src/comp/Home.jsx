@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Coaches from './Coaches';
 
 const mockOffers = [
-  { id: 1, duration: '1 Month', price: '450', price_new: '350', private: '1',invite: '1' },
-  { id: 2, duration: '3 Months', price: '1350', price_new: '700', private: '2',  invite: '2' },
+  { id: 1, duration: '1 Month', price: '450', price_new: '400', private: '1',invite: '1' },
+  { id: 2, duration: '3 Months', price: '1350', price_new: '800', private: '2',  invite: '2' },
   { id: 3, duration: '6 Months', price: '2400', price_new: '1200', private: '4',  invite: '4' },
-  { id: 4, duration: '12 Months', price: '3600', price_new: '1800', private: '8',  invite: '8' },
+  { id: 4, duration: '12 Months', price: '3600', price_new: '1900', private: '8',  invite: '8' },
 ];
 
 const mockClasses = [
