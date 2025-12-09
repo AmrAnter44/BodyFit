@@ -6,7 +6,7 @@ export default function Coaches() {
     {
       id: 1,
       name: 'Ahmed Talat',
-      title: 'Genral Trainer',
+      title: 'General Manager',
       img: '/coaches/tal3at.png',
       link: 'https://www.instagram.com/_ahmedtalaat7?igsh=MXYzZ3VuZzBnZG9neA%3D%3D&utm_source=qr'
     },
